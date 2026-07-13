@@ -1,0 +1,23 @@
+name: 'Ploi deploy'
+description: 'Trigger a Ploi deploy webhook and poll the returned ping_url, streaming the deploy log until it finishes.'
+inputs:
+  token:
+    description: 'Ploi deploy webhook token.'
+    required: true
+  server-id:
+    description: 'Ploi server id.'
+    required: true
+  site-id:
+    description: 'Ploi site id.'
+    required: true
+  timeout-seconds:
+    description: 'Fail if the deploy has not finished after this many seconds.'
+    required: false
+    default: '600'
+  interval-seconds:
+    description: 'Seconds between status polls.'
+    required: false
+    default: '10'
+runs:
+  using: 'node24'
+  main: 'dist/index.js'
